@@ -1,0 +1,21 @@
+<h3>Edit Product:</h3>
+<button [routerLink]="['/']" class="btn btn-info">Back</button>
+
+<!-- {{ product | json }} -->
+
+<div class="">
+  <p *ngFor="let error of errors">{{ error }}</p>
+
+  <form (submit)="update(product)" class="form-group">
+    Name:<input name="product.name" [(ngModel)]="product.name" value="{{ product.name }}" class="form-control"/>
+    Qty: <input name="product.quantity" [(ngModel)]="product.quantity" value="{{ product.quantity }}" class="form-control"/>
+    Price: <input name="product.price" [(ngModel)]="product.price" value="{{ product.price }}" class="form-control"/>
+
+    <input type="submit" value="Update Product" class="btn btn-primary"/>
+    <!-- <form (submit)="clear()" class="form-control">
+      <button type="submit" name="clear" class="btn btn-success">Reset</button>
+    </form> -->
+    <button (click)="clear()" type="button" name="clear" class="btn btn-success">Reset</button>
+    <!-- <input type="submit" value="Create Product" /> -->
+  </form>
+</div>

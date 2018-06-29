@@ -1,0 +1,29 @@
+<h3>Submit a New Product!</h3>
+<button [routerLink]="['/']" class="btn btn-info">Back</button>
+
+<!-- {{ product | json }} -->
+<div class="">
+  <p *ngFor="let error of errors">{{ error }}</p>
+
+  <!-- <form (submit)="clear()" class="form-control">
+    <button type="submit" name="clear" class="btn btn-success">Reset</button>
+  </form> -->
+  <form (submit)="create()" class="form-group">
+    Name:<input name="product.name" [(ngModel)]="product.name" minlength="3" required #name="ngModel"/>
+    <p *ngIf="!name.valid && title.dirty" class="red">Title must be 3 characters</p>
+
+    Qty: <input type="number" name="product.quantity" [(ngModel)]="product.quantity" min="0" required #quantity="ngModel"/>
+    <p *ngIf="!quantity.valid && title.dirty" class="red">Quantity must be more than Zero</p>
+
+    Price: <input type="number" name="product.price" [(ngModel)]="product.price" min="0" required #price="ngModel"/>
+    <p *ngIf="!price.valid && title.dirty" class="red">Price must be more than Zero</p>
+
+    <button type="submit" name="button" class="btn btn-primary" *ngIf="name.valid && quantity.valid && quantity.valid">Create Product</button>
+    <!-- <form (submit)="clear()" class="form-group">
+      <button type="submit" name="clear" class="btn btn-success">Reset</button>
+    </form> -->
+    <button (click)="clear()" type="button" name="clear" class="btn btn-success">Reset</button>
+
+    <!-- <input type="submit" value="Create Product" /> -->
+  </form>
+</div>

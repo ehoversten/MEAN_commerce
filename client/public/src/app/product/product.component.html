@@ -1,0 +1,20 @@
+<div *ngIf="product">
+
+  <!-- {{ product | json }} -->
+
+  <table border="1" class="table table-striped table-dark">
+      <tr>
+          <th>Name:</th>
+          <th>Qty:</th>
+          <th>Price:</th>
+      </tr>
+
+      <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price }}</td>
+      </tr>
+  </table>
+  <button (click)="destroy(product)" class="btn btn-danger">Delete</button>
+  <button [routerLink]="['/']" class="btn btn-warning">Back</button>
+</div>

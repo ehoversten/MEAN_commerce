@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(express.json());
 
 // serves up our Angular App
-// app.use(express.static(path.join(__dirname, '/client/public/dist/public')));
+app.use(express.static(path.join(__dirname, '/client/public/dist/public')));
 
 // connect to our Mongo database
 require("./server/config/mongoose.js");

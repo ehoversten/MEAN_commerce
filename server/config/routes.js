@@ -14,9 +14,10 @@ module.exports = function(app) {
   // app.post("/api/movies/:id/review", ReviewController.create);
   //
   // app.get("/api/reviews/:id",ReviewController.find);
+
+
+
   // if we dont hit ay of our backend routes, serve our Angular App
-
-
   app.all("*", (req, res, next)=> {
     res.sendFile(path.resolve("./client/public/dist/public/index.html"));
   });

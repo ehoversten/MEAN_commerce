@@ -10,9 +10,9 @@ class ProductController {
       if(products) {
         console.log("Found: ", products)
         // return all tasks as JSON OBJECTS
-        return res.status(200).json(products);
+        return res.json(products);
 			} else {
-				return res.status(404).json( {
+				return res.json( {
           "error":err,
           "message":"Could not find all products!",
         });
@@ -29,10 +29,10 @@ find_product(req, res) {
   Product.findOne( {_id:req.params.id}, (err, product)=> {
     if(product) {
       // console.log("Found: ", product);
-      return res.status(200).json(product);
+      return res.json(product);
     } else {
       // console.log("Product not found", err);
-      return res.status(404).json({
+      return res.json({
         "error":err,
         "message":"Failed to find Product with id:"+req.params.id
       });
@@ -48,13 +48,13 @@ find_product(req, res) {
     product.save(err=> {
       if(err) {
         // console.log("Something went wrong", err);
-        return res.status(403).json({
+        return res.json({
           "error":err.errors,
           "message":"Failed to create Product"
         });
       } else {
         console.log("Product created successfully");
-        return res.status(200).json(product);
+        return res.json(product);
       }
     });
   }
