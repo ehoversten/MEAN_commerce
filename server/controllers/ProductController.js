@@ -67,7 +67,7 @@ find_product(req, res) {
     console.log("hit update route");
     Product.findOne({_id: req.params.id}, (err, product)=> {
       if(product){
-        // if the field was updated, update it. If not changed, save what we had before
+      // if the field was updated, update it. If not changed, save what we had before
         product.name = req.body.name || product.name;
         product.quantity = req.body.quantity || product.quantity;
         product.price = req.body.price || product.price;

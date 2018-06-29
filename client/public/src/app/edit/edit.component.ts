@@ -44,33 +44,36 @@ export class EditComponent implements OnInit {
     }
   }
 
+  // update(product) {
+  //   this.productService.update(this.product, (data) => {
+  //     this.product = data;
+  //     this.errors = this.validate(data);
+  //     if (this.errors) {
+  //       console.log("Update Error:" , data.errors );
+  //     } else {
+  //     // if (data.errors) {
+  //     //   console.log("Update Error:" , data.errors );
+  //     // } else {
+  //
+  //       this.product = data;
+  //       this.router.navigateByUrl('/products');
+  //     }
+  //   });
+  // }
+
   update(product) {
     // this.product = data;
     // this.errors = this.validate(data);
-
-    this.productService.update(this.product, (data) => {
+    this.productService.update(product, this.product).subscribe(data => {
       this.product = data;
       this.errors = this.validate(data);
-      // this.errors = this.validate(data);
-      this.errors = this.validate(this.product);
-      // if (errors) {
-      //   console.log("Update Error:" , data.errors );
-      // } else {
-      if (data.errors) {
+      if (this.errors) {
         console.log("Update Error:" , data.errors );
       } else {
-
-        this.product = data;
         this.router.navigateByUrl('/products');
       }
     });
   }
-
-  // update(id) {
-  //   this.productService.update(product, this.product).subscribe(data => {
-  //     this.product = data;
-  //   });
-  // }
 
 
 //-- reset our forms with blank strings - ""
